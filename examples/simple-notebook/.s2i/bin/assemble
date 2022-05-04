@@ -5,7 +5,7 @@ set -x
 
 echo " --> assembling the jupyter notebook"
 mkdir -p /opt/app-root/src/.jupyter
-pip install notebook==6.4.11
+pip install notebook==$NOTEBOOK_VERSION
 
 echo " --> falling back to the default assemble script"
 exec /usr/libexec/s2i/assemble

@@ -20,6 +20,9 @@ spec:
           env:
             - name: JUPYTER_PORT
               value: "8080"
+            #- name: JUPYTER_PASSWORD
+            #  value: "openshift"
+              
           #envFrom:
           #  - configMapRef:
           #      name: fsi-fraud-detection-config
