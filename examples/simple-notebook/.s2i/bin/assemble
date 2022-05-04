@@ -6,11 +6,16 @@ set -x
 echo " --> assembling the jupyter notebook"
 mkdir -p /opt/app-root/src/.jupyter
 
+# debug
+ls -la /tmp/scripts
+mv /tmp/scripts/jupyter_notebook_config.py /tmp/jupyter_notebook_config.py
+ls -la /tmp
+
 echo " --> falling back to the default script"
 exec /usr/libexec/s2i/assemble
 
 # move the config if it does not exist
-cp /tmp/scripts/jupyter_notebook_config.py /opt/app-root/src/.jupyter/jupyter_notebook_config.py
+cp /tmp/jupyter_notebook_config.py /opt/app-root/src/.jupyter/jupyter_notebook_config.py
 
 # debug
 ls -la /opt/app-root/src
