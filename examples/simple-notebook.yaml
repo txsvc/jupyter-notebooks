@@ -4,10 +4,10 @@ items:
   - kind: BuildConfig
     apiVersion: build.openshift.io/v1
     metadata:
-      name: s2i-minimal-notebook
+      name: simple-notebook
       labels:
         app.openshift.io/runtime: python
-        svc: jupyter-notebook
+        svc: simple-notebook
         app: jupyterhub
     spec:
       runPolicy: Serial
@@ -15,23 +15,20 @@ items:
         git:
           ref: develop
           uri: "https://github.com/txsvc/jupyter-notebooks"
-        contextDir: "minimal-notebook"
+        contextDir: "examples/simple-notebook"
         type: Git
       strategy:
-        type: Docker
-        dockerStrategy:
-          dockerfilePath: Dockerfile
-        #type: Source
-        #sourceStrategy:
-        #  from:
-        #    kind: ImageStreamTag
-        #    name: "python:3.9-ubi8"
-        #    namespace: openshift
-        #  env: []
+        type: Source
+        sourceStrategy:
+          from:
+            kind: ImageStreamTag
+            name: "python:3.9-ubi8"
+            namespace: openshift
+          env: []
       output:
         to:
           kind: ImageStreamTag
-          name: s2i-minimal-notebook:3.9
+          name: simple-notebook:latest
       triggers:
         - type: ImageChange
           imageChange: {}
@@ -40,10 +37,10 @@ items:
   - kind: ImageStream
     apiVersion: image.openshift.io/v1
     metadata:
-      name: s2i-minimal-notebook
+      name: simple-notebook
       labels:
         app.openshift.io/runtime: python
-        svc: jupyter-notebook
+        svc: simple-notebook
         app: jupyterhub
       annotations:
-        description: jupyter-notebook image
+        description: simple-notebook image
