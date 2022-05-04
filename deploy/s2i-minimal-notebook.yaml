@@ -14,7 +14,7 @@ items:
       source:
         git:
           ref: develop
-          uri: "https://github.com/redhat-capgemini-exchange/jupyter-notebooks"
+          uri: "https://github.com/txsvc/jupyter-notebooks"
         contextDir: "minimal-notebook"
         type: Git
       strategy:

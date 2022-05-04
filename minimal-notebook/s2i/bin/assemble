@@ -6,3 +6,8 @@ set -eo pipefail
 # Run the original Python S2I assemble script to install packages.
 /usr/libexec/s2i/assemble
 
+echo "ASSEMBLE"
+cat /usr/libexec/s2i/assemble
+
+echo "RUN"
+cat /usr/libexec/s2i/run
