@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -eo pipefail
+set -x
+
+echo " --> assembling the jupyter notebook"
+ls -la /tmp/src
+ls -la /tmp/scripts
+
+ls -la /opt/app-root/src
+
+echo " --> falling back to the default script"
+exec /usr/libexec/s2i/assemble
+
+ls -la /opt/app-root/src
