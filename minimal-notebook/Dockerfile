@@ -28,6 +28,8 @@ RUN chown -R 1001:0 $STI_SCRIPTS_PATH && chown -R 1001:0 $APP_ROOT
 USER 1001
 
 # build using the custom script
+RUN pwd
+RUN ls -la
 RUN ./builder/assemble
 
 # Set the default CMD to print the usage of the language image.
