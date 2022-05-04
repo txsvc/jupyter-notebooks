@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -x
+set -eo pipefail
+
+echo "pwd"
+pwd
+
+echo "bom"
+ls -la
+
+echo "ASSEMBLE"
+cat /usr/libexec/s2i/assemble
+
+echo "RUN"
+cat /usr/libexec/s2i/run
+
+# Run the original Python S2I assemble script to install packages.
+/usr/libexec/s2i/assemble
