@@ -19,7 +19,7 @@ spec:
             image-registry.openshift-image-registry.svc:5000/notebook1/simple-notebook:latest
           env:
             - name: JUPYTER_PORT
-              value: 8080
+              value: "8080"
           #envFrom:
           #  - configMapRef:
           #      name: fsi-fraud-detection-config

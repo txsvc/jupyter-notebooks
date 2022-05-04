@@ -1,3 +1,6 @@
+# Custom configuration for the notebook. Everything below is commented out !
+c.NotebookApp.ip = '0.0.0.0'
+
 # Configuration file for jupyter-notebook.
 
 #------------------------------------------------------------------------------
