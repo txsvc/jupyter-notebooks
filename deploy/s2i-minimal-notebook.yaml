@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: List
+items:
+  - kind: BuildConfig
+    apiVersion: build.openshift.io/v1
+    metadata:
+      name: s2i-minimal-notebook
+      labels:
+        app.openshift.io/runtime: python
+        svc: jupyter-notebook
+        app: jupyterhub
+    spec:
+      runPolicy: Serial
+      source:
+        git:
+          ref: develop
+          uri: "https://github.com/redhat-capgemini-exchange/jupyter-notebooks"
+        contextDir: "minimal-notebook"
+        type: Git
+      strategy:
+        type: Source
+        sourceStrategy:
+          from:
+            kind: ImageStreamTag
+            name: "python:3.9-ubi8"
+            namespace: openshift
+          env: []
+      output:
+        to:
+          kind: ImageStreamTag
+          name: s2i-minimal-notebook:3.9
+      triggers:
+        - type: ImageChange
+          imageChange: {}
+        - type: ConfigChange
+
+  - kind: ImageStream
+    apiVersion: image.openshift.io/v1
+    metadata:
+      name: s2i-minimal-notebook
+      labels:
+        app.openshift.io/runtime: python
+        svc: jupyter-notebook
+        app: jupyterhub
+      annotations:
+        description: jupyter-notebook image
