@@ -17,8 +17,9 @@ LABEL summary="$SUMMARY" \
       io.k8s.display-name="Jupyter $VERSION" \
       io.openshift.tags="builder,python,jupyter${JUPYTER_MAJOR_VERSION}${JUPYTER_MINOR_VERSION}" \
       name="$CONTAINER_NAME" \
-      version="$VERSION" \
-      io.openshift.s2i.scripts-url="image:///opt/app-root/builder"
+      version="$VERSION"
+
+#io.openshift.s2i.scripts-url="image:///opt/app-root/builder"
 
 # Copy the custom S2I scripts to $STI_SCRIPTS_PATH.
 COPY ./s2i/bin/ $STI_SCRIPTS_PATH
