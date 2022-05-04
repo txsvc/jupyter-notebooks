@@ -1,0 +1,28 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  name: simple-notebook
+  labels:
+    svc: simple-notebook
+    app.openshift.io/runtime: python
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: simple-notebook
+    spec:
+      containers:
+        - name: data-svc
+          #image: simple-notebook:latest
+          image: >-
+            image-registry.openshift-image-registry.svc:5000/notebook1/simple-notebook:latest
+          env:
+            - name: JUPYTER_PORT
+              value: "8080"
+            #- name: JUPYTER_PASSWORD
+            #  value: "openshift"
+              
+          #envFrom:
+          #  - configMapRef:
+          #      name: fsi-fraud-detection-config
