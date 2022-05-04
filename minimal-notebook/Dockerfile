@@ -25,8 +25,8 @@ LABEL summary="$SUMMARY" \
 COPY ./s2i/bin/ $STI_SCRIPTS_PATH
 
 # debug
-ADD app-src /tmp/src
 RUN ls -la /tmp
+#ADD app-src /tmp/src
 RUN ls -la /tmp/src
 
 RUN cat /usr/libexec/s2i/assemble
