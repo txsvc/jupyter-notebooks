@@ -13,7 +13,7 @@ items:
       runPolicy: Serial
       source:
         git:
-          ref: develop
+          ref: main
           uri: "https://github.com/txsvc/jupyter-notebooks"
         contextDir: "examples/simple-notebook"
         type: Git
