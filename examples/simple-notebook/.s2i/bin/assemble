@@ -7,7 +7,7 @@ echo " --> assembling the jupyter notebook"
 #ls -la /tmp/src
 #ls -la /tmp/src/.jupyter
 mkdir -p /opt/app-root/src/.jupyter
-cp /tmp/src/.jupyter/jupyter_notebook_config.py /opt/app-root/src/.jupyter/jupyter_notebook_config.py
+#cp /tmp/src/.jupyter/jupyter_notebook_config.py /opt/app-root/src/.jupyter/jupyter_notebook_config.py
 
 echo " --> falling back to the default script"
 exec /usr/libexec/s2i/assemble
