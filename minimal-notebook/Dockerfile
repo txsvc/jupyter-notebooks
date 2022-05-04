@@ -24,12 +24,20 @@ LABEL summary="$SUMMARY" \
 # Copy the custom S2I scripts to $STI_SCRIPTS_PATH.
 COPY ./s2i/bin/ $STI_SCRIPTS_PATH
 
+# debug
+ADD app-src /tmp/src
+RUN ls -la /tmp
+RUN ls -la /tmp/src
+
+RUN cat /usr/libexec/s2i/assemble
+RUN cat /usr/libexec/s2i/run
+
+RUN ./builder/assemble
+# end debug
+
+# switch to run user
 RUN chown -R 1001:0 $STI_SCRIPTS_PATH && chown -R 1001:0 $APP_ROOT
 USER 1001
-
-# build using the custom script
-RUN ls -la /tmp/src
-RUN ./builder/assemble
 
 # Set the default CMD to print the usage of the language image.
 CMD $STI_SCRIPTS_PATH/usage
